@@ -1,0 +1,28 @@
+.no-results { 
+      display:flex; 
+      flex-direction:column; 
+      align-items: center;
+      justify-content: center;
+      padding:86px 0 80px; 
+      background: #F5F6F7; 
+    }
+    .no-results img { 
+      margin-bottom:31px;
+    }
+    .no-results h1{ 
+      margin:0 0 16px; 
+      font-family:"Roboto Slab", Georgia, serif; 
+      font-weight: 400; 
+      font-size:26px; 
+      line-height: 30px; 
+      color: #1A1B22; 
+    }
+    .no-results p { 
+      color: rgba(182, 188, 191, 1); 
+      font-family:"Roboto", sans-serif; 
+      font-weight:400; 
+      font-size:18px; 
+      line-height:24px; 
+      width: 356px; 
+      text-align: center;
+    }
