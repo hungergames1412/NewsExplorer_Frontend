@@ -27,10 +27,14 @@ Frontend Repository:
 https://github.com/hungergames1412/NewsExplorer_Frontend
 
 Pull Request:
-[Add your link here]
+https://github.com/hungergames1412/NewsExplorer_Frontend/pull/1
 
 Live Project:
-[Add your link here]
+https://hungergames1412.github.io/NewsExplorer_Frontend/
+
+Project Pitch: 
+Check out this video:  , where I describe my 
+ project and some challenges I faced while building it.
 
 Note
 
