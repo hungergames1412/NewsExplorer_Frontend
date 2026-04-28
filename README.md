@@ -33,8 +33,7 @@ Live Project:
 https://hungergames1412.github.io/NewsExplorer_Frontend/
 
 Project Pitch: 
-Check out this video:  , where I describe my 
- project and some challenges I faced while building it.
+Check out this video: https://www.loom.com/share/fda3d0e9172f44039197e613cdb5d03e, where I describe my project and some challenges I faced while building it.
 
 Note
 
