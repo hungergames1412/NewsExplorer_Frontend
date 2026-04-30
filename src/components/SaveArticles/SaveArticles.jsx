@@ -9,12 +9,14 @@ import { getToken } from "../../utils/token";
 const SaveArticles = ({ isLoggedIn, handleLogout }) => {
   const currentUser = useContext(CurrentUserContext);
   const [userArticles, setUserArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const token = getToken();
 
     if (!token) {
       setUserArticles([]);
+      setIsLoading(false);
       return;
     }
 
@@ -25,7 +27,8 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
       .catch((err) => {
         console.error("Failed to fetch saved articles:", err);
         setUserArticles([]);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   const handleDeleteSuccess = (id) => {
@@ -41,9 +44,7 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
     }, {});
 
     const uniqueKeywords = Object.keys(counts);
-    uniqueKeywords.sort(
-      (a, b) => counts[b] - counts[a] || a.localeCompare(b)
-    );
+    uniqueKeywords.sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
 
     const topTwo = uniqueKeywords.slice(0, 2);
     const othersCount = uniqueKeywords.length - topTwo.length;
@@ -83,7 +84,8 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
                 )}
                 {keywordSummary.othersCount > 0 && (
                   <>
-                    {" "}and{" "}
+                    {" "}
+                    and{" "}
                     <strong className="saved-articles__keyword">
                       {keywordSummary.othersCount} other
                       {keywordSummary.othersCount > 1 ? "s" : ""}
@@ -96,8 +98,10 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
         </div>
       </header>
 
-      <main className="saved-articles">
-        <section className="saved-articles__cards">
+      <section className="saved-articles">
+        {isLoading ? (
+          <p className="saved-articles__status">Loading saved articles...</p>
+        ) : (
           <div className="news-card-container">
             {userArticles.map((article) => (
               <NewsCard
@@ -108,8 +112,8 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
               />
             ))}
           </div>
-        </section>
-      </main>
+        )}
+      </section>
     </>
   );
 };

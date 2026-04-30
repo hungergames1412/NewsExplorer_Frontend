@@ -82,7 +82,7 @@ const App = () => {
     } catch (err) {
       setArticles([]);
       setSearchError(
-        "Sorry, something went wrong during the request. Please try again later."
+        "Sorry, something went wrong during the request. Please try again later.",
       );
     } finally {
       setIsLoading(false);
@@ -195,7 +195,7 @@ const App = () => {
           </Routes>
         </main>
 
-        <section>
+        <div className="page__modals">
           <RegisterModal
             isOpen={activeModal === "signup"}
             handleCloseClick={handleCloseClick}
@@ -214,7 +214,7 @@ const App = () => {
             handleSigninClick={handleSigninClick}
             handleCloseClick={handleCloseClick}
           />
-        </section>
+        </div>
 
         <Footer />
       </div>
