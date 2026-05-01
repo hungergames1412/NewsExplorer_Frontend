@@ -1,4 +1,4 @@
-import ModalWithForm from "../ModalWithForm/ModalwithForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const SuccessRegister = ({ handleSigninClick, isOpen, handleCloseClick }) => {
   return (

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ModalWithForm from "../ModalWithForm/ModalwithForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const LoginModal = ({
   isOpen,
