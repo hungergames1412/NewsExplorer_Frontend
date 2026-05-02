@@ -37,14 +37,15 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
 
   const keywordSummary = useMemo(() => {
     const counts = userArticles.reduce((acc, article) => {
-      const k = (article.keyword || "").trim();
-      if (!k) return acc;
-      acc[k] = (acc[k] || 0) + 1;
+      const keyword = (article.keyword || "").trim();
+      if (!keyword) return acc;
+      acc[keyword] = (acc[keyword] || 0) + 1;
       return acc;
     }, {});
 
-    const uniqueKeywords = Object.keys(counts);
-    uniqueKeywords.sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
+    const uniqueKeywords = Object.keys(counts).sort(
+      (a, b) => counts[b] - counts[a] || a.localeCompare(b)
+    );
 
     const topTwo = uniqueKeywords.slice(0, 2);
     const othersCount = uniqueKeywords.length - topTwo.length;
@@ -54,12 +55,12 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
 
   return (
     <>
-      <header className="saved-news-header">
-        <div className="saved-news-header_nav">
+      <section className="saved-news-header">
+        <div className="saved-news-header__nav">
           <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         </div>
 
-        <div className="saved-news-header_hero">
+        <div className="saved-news-header__hero">
           <h2 className="saved-articles__heading">Saved articles</h2>
 
           <h1 className="saved-articles__header">
@@ -84,8 +85,7 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
                 )}
                 {keywordSummary.othersCount > 0 && (
                   <>
-                    {" "}
-                    and{" "}
+                    {" "}and{" "}
                     <strong className="saved-articles__keyword">
                       {keywordSummary.othersCount} other
                       {keywordSummary.othersCount > 1 ? "s" : ""}
@@ -96,22 +96,23 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
             )}
           </p>
         </div>
-      </header>
+      </section>
 
       <section className="saved-articles">
         {isLoading ? (
           <p className="saved-articles__status">Loading saved articles...</p>
         ) : (
-          <div className="news-card-container">
+          <ul className="saved-articles__list">
             {userArticles.map((article) => (
-              <NewsCard
-                key={article._id}
-                article={article}
-                isLoggedIn={isLoggedIn}
-                onDeleteSuccess={handleDeleteSuccess}
-              />
+              <li key={article._id} className="saved-articles__item">
+                <NewsCard
+                  article={article}
+                  isLoggedIn={isLoggedIn}
+                  onDeleteSuccess={handleDeleteSuccess}
+                />
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </section>
     </>

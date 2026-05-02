@@ -28,7 +28,7 @@ const SearchForm = ({ onSearch }) => {
   };
 
   return (
-    <header className="search-form">
+    <section className="search-form">
       <h1 className="search-form__heading">What's going on in the world?</h1>
       <p className="search-form__description">
         Find the latest news on any topic and save them in your personal
@@ -47,7 +47,7 @@ const SearchForm = ({ onSearch }) => {
         </button>
       </form>
       {searchError && <p className="search-form__keyword">{searchError}</p>}
-    </header>
+    </section>
   );
 };
 

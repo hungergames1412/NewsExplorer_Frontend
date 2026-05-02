@@ -12,7 +12,7 @@ const NewsGrid = ({
   return (
     <section className="news-grid">
       <h2 className="news-grid__title">Search Results</h2>
-      <div className="news-grid__container">
+      <ul className="news-grid__container">
         {searchResults.map((article) => (
           <li key={article.url} className="news-grid__item">
             <NewsCard
@@ -23,11 +23,15 @@ const NewsGrid = ({
             />
           </li>
         ))}
-      </div>
+      </ul>
 
       {moreArticles && (
         <div className="show-more-container">
-          <button type="button" onClick={onShowMore} className="news-grid__show-more">
+          <button
+            type="button"
+            onClick={onShowMore}
+            className="news-grid__show-more"
+          >
             Show More
           </button>
         </div>
