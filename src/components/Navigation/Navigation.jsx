@@ -90,7 +90,13 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
                 className={({ isActive }) =>
                   `navigation__link${
                     isSavedArticlesPage ? " navigation__link_theme_dark" : ""
-                  }${isActive ? " navigation__link_state_active" : ""}`
+                  }${
+                    isActive
+                      ? isSavedArticlesPage
+                        ? " navigation__link_state_active-dark"
+                        : " navigation__link_state_active"
+                      : ""
+                  }`
                 }
               >
                 Home
@@ -99,8 +105,14 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
               <NavLink
                 to="/saved-news"
                 className={({ isActive }) =>
-                  `navigation__link navigation__link_theme_dark${
-                    isActive ? " navigation__link_state_active-dark" : ""
+                  `navigation__link${
+                    isSavedArticlesPage ? " navigation__link_theme_dark" : ""
+                  }${
+                    isActive
+                      ? isSavedArticlesPage
+                        ? " navigation__link_state_active-dark"
+                        : " navigation__link_state_active"
+                      : ""
                   }`
                 }
               >
